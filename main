@@ -1,0 +1,34 @@
+#include "lpc17xx.h"
+#include "uart.h"
+#include "stdio.h"
+#include "GLCD.h"
+#include <cmsis_os2.h>
+#include "math.h"
+	 
+	 
+	 
+int adder()
+{
+	while(1){
+
+	 
+	 
+int main(void){
+	
+	SystemInit();
+	GLCD_Init();
+	osKernelInitialize();
+	
+	//printf statement before calling them in the functions
+	printf("Initialize...");
+	
+	//threads to call functions
+	osThreadNew(ANALOG_INPUT,NULL,NULL);
+	osThreadNew(JOY_STICK,NULL,NULL);
+	osThreadNew(LED_caller,NULL,NULL);
+	osKernelStart();
+	
+	//infinite loop for kernal to take over
+	while(1);
+
+}
